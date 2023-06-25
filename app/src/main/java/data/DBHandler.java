@@ -1,5 +1,6 @@
 package data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -45,5 +46,18 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public int insertStudent(Student student){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values1 = new ContentValues();
+        values1.put(COLUMN_ID, student.getId());
+        values1.put(COLUMN_NAME, student.getName());
+        values1.put(COLUMN_AGE, student.getAge());
+        values1.put(COLUMN_CLASS, student.get_Class());
+        int i = (int) db.insert(TABLE_NAME1, null, values1);
+        db.close();
+        return i;
     }
 }

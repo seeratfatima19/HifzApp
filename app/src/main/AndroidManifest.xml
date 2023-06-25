@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HifzApp"
         tools:targetApi="31">
         <activity
+            android:name=".ViewStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddStudentActivity"
+            android:exported="false" />
+        <activity
             android:name=".SelectActionActivity"
             android:exported="false" />
         <activity
