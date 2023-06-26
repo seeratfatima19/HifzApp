@@ -90,7 +90,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Student getStudent(String studentId)
     {
-        String query1= "SELECT * FROM "+ TABLE_NAME1+ " WHERE "+ COLUMN_ID +"="+studentId;
+        String query1= "SELECT * FROM "+ TABLE_NAME1+ " WHERE "+ COLUMN_ID +"= '"+studentId+"'";
         SQLiteDatabase db=this.getReadableDatabase();
         Student student=null;
         try {
@@ -102,6 +102,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 if (cursor.moveToFirst()) {
                     do {
                         student= new Student();
+                        student.setId(cursor.getString(0));
                         student.setName(cursor.getString(1));
                         student.setAge(cursor.getInt(2));
                         student.setClass(cursor.getInt(3));
@@ -119,5 +120,10 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
         return student;
+    }
+
+    public int updateStudent(String date, int surah, int para, String sabaq, String sabqi, String manzil)
+    {
+        
     }
 }
