@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DBHandler extends SQLiteOpenHelper {
 
     public static final int DB_VERSION =1;
@@ -122,8 +124,67 @@ public class DBHandler extends SQLiteOpenHelper {
         return student;
     }
 
-    public int updateStudent(String date, int surah, int para, String sabaq, String sabqi, String manzil)
+    public int updateStudent(String id, String date, int surah, int para, String sabaq, int sabqi, int manzil)
     {
-        
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values1 = new ContentValues();
+        values1.put(COLUMN_ID, id);
+        values1.put(COLUMN_DATE,date);
+        values1.put(COLUMN_SURAH, surah);
+        values1.put(COLUMN_PARA, para);
+        values1.put(COLUMN_AYAT, sabaq);
+        values1.put(COLUMN_SABQI, sabqi);
+        values1.put(COLUMN_MANZIL, manzil);
+        int i = (int) db.insert(TABLE_NAME2, null, values1);
+        db.close();
+        return i;
+
+    }
+
+    public ArrayList<StudentData> getStudentData(String id) {
+        String query1 = "SELECT * FROM " + TABLE_NAME2 + " WHERE " + COLUMN_ID + "= '" + id + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<StudentData> studentData = new ArrayList<StudentData>();
+        try {
+
+            Cursor cursor = db.rawQuery(query1, null);
+            try {
+
+                // looping through all rows and adding to list
+                if (cursor.moveToFirst()) {
+                    do {
+                        StudentData student = new StudentData();
+                        student.setId(cursor.getString(0));
+                        student.setDate(cursor.getString(1));
+                        student.setSurah(cursor.getInt(2));
+                        student.setPara(cursor.getInt(3));
+                        student.setSabaq(cursor.getString(4));
+                        student.setSabqi(cursor.getInt(5));
+                        student.setManzil(cursor.getInt(6));
+
+                        System.out.println(cursor.getString(1));
+                        studentData.add(student);
+                    } while (cursor.moveToNext());
+                }
+
+            } finally {
+                try {
+                    cursor.close();
+                }
+                catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+
+        } finally {
+            try {
+                db.close();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+
+        return studentData;
     }
 }

@@ -15,7 +15,7 @@ public class SelectActionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_action);
 
-        viewStudent = (AppCompatButton)findViewById(R.id.viewStudentBtn);
+        viewStudent = (AppCompatButton)findViewById(R.id.viewStudentBtnU);
         addStudent = (AppCompatButton)findViewById(R.id.addStudentBtn);
 
         addStudent.setOnClickListener(new View.OnClickListener() {

@@ -7,7 +7,7 @@
     tools:context=".SelectActionActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/viewStudentBtn"
+        android:id="@+id/viewStudentBtnU"
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:text="View Student"
