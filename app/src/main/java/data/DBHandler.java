@@ -40,7 +40,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String query1 = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME1+"( "+ COLUMN_ID+" TEXT PRIMARY KEY,"+ COLUMN_NAME+" TEXT, "+ COLUMN_AGE+" TEXT, "+ COLUMN_CLASS+" TEXT)";
-        String query2 = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME2+"( "+ COLUMN_ID+" TEXT PRIMARY KEY,"+ COLUMN_DATE+" TEXT, "+ COLUMN_SURAH+" INTEGER, "+ COLUMN_PARA+" INTEGER, "+ COLUMN_AYAT+" TEXT, "+ COLUMN_SABQI+" INTEGER,"+ COLUMN_MANZIL+" INTEGER)";
+        String query2 = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME2+"( "+ COLUMN_ID+" TEXT ,"+ COLUMN_DATE+" TEXT, "+ COLUMN_SURAH+" INTEGER, "+ COLUMN_PARA+" INTEGER, "+ COLUMN_AYAT+" TEXT, "+ COLUMN_SABQI+" INTEGER,"+ COLUMN_MANZIL+" INTEGER)";
         db.execSQL(query1);
         db.execSQL(query2);
 

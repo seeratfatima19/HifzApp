@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardRow"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/dateView"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:hint="YYYY/MM/DD"
                 android:textSize="20dp"
@@ -58,6 +58,7 @@
                 android:text="Surah:"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.111"

@@ -45,6 +45,8 @@ public class EditStudentActivity extends AppCompatActivity {
                     Toast.makeText(EditStudentActivity.this,"Data added!",Toast.LENGTH_SHORT).show();
                 }
 
+                Intent intent2 = new Intent(EditStudentActivity.this,UpdateStudentActivity.class);
+                startActivity(intent2);
             }
         });
 
