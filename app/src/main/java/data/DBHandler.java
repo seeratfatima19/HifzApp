@@ -2,6 +2,7 @@ package data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -59,5 +60,64 @@ public class DBHandler extends SQLiteOpenHelper {
         int i = (int) db.insert(TABLE_NAME1, null, values1);
         db.close();
         return i;
+    }
+
+    public void showDb()
+    {
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME1;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            try {
+
+                // looping through all rows and adding to list
+                if (cursor.moveToFirst()) {
+                    do {
+                        System.out.println(cursor.getString(0));
+                    } while (cursor.moveToNext());
+                }
+
+            } finally {
+                try { cursor.close(); } catch (Exception ex) {System.out.println(ex.getMessage());}
+            }
+
+        } finally {
+            try { db.close(); } catch (Exception ex) {System.out.println(ex.getMessage());}
+        }
+    }
+
+    public Student getStudent(String studentId)
+    {
+        String query1= "SELECT * FROM "+ TABLE_NAME1+ " WHERE "+ COLUMN_ID +"="+studentId;
+        SQLiteDatabase db=this.getReadableDatabase();
+        Student student=null;
+        try {
+
+            Cursor cursor = db.rawQuery(query1, null);
+            try {
+
+                // looping through all rows and adding to list
+                if (cursor.moveToFirst()) {
+                    do {
+                        student= new Student();
+                        student.setName(cursor.getString(1));
+                        student.setAge(cursor.getInt(2));
+                        student.setClass(cursor.getInt(3));
+
+                        System.out.println(cursor.getString(1));
+                    } while (cursor.moveToNext());
+                }
+
+            } finally {
+                try { cursor.close(); } catch (Exception ex) {System.out.println(ex.getMessage());}
+            }
+
+        } finally {
+            try { db.close(); } catch (Exception ex) {System.out.println(ex.getMessage());}
+        }
+
+        return student;
     }
 }

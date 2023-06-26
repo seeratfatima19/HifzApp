@@ -107,9 +107,10 @@
         app:layout_constraintVertical_bias="0.131" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveStudentBtn"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="Add Student"
+        android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.559"
